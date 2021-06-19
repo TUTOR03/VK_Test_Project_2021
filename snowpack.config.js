@@ -4,14 +4,14 @@ module.exports = {
   plugins: [
     '@snowpack/plugin-typescript',
     '@snowpack/plugin-react-refresh',
-    '@snowpack/plugin-dotenv'
+    '@snowpack/plugin-dotenv',
   ],
   packageOptions: {
     polyfillNode: true,
   },
   mount: {
-    "public": {url: "/", static: true, resolve: false},
-    "src": {url: "/build"}
+    public: { url: '/', static: true, resolve: false },
+    src: { url: '/build' },
   },
   optimize: {
     bundle: true,
@@ -22,6 +22,7 @@ module.exports = {
   alias: {
     '@utils': path.join(__dirname, 'src/utils'),
     '@components': path.join(__dirname, 'src/components'),
+    '@styles': path.join(__dirname, 'src/styles'),
   },
   exclude: ['**/node_modules/**/*', '**/*.test.*'],
 }
