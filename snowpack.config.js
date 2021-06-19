@@ -23,6 +23,7 @@ module.exports = {
     '@utils': path.join(__dirname, 'src/utils'),
     '@components': path.join(__dirname, 'src/components'),
     '@styles': path.join(__dirname, 'src/styles'),
+    '@types': path.join(__dirname, 'src/types')
   },
   exclude: ['**/node_modules/**/*', '**/*.test.*'],
 }

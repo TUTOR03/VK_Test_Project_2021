@@ -14,7 +14,8 @@
     "paths": {
       "@utils/*": ["./src/utils/*"],
       "@components/*": ["./src/components/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@types/*": ["./src/types/*"]
     }
   },
   "include": ["./src/**/*"],
