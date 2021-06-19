@@ -15,9 +15,10 @@
       "@utils/*": ["./src/utils/*"],
       "@components/*": ["./src/components/*"],
       "@styles/*": ["./src/styles/*"],
-      "@types/*": ["./src/types/*"]
+      "@type/*": ["./src/types/*"],
+      "@assets/*": ["./src/assets/*"]
     }
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./types"],
   "exclude": ["node_modules"]
 }

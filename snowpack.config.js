@@ -5,12 +5,13 @@ module.exports = {
     '@snowpack/plugin-typescript',
     '@snowpack/plugin-react-refresh',
     '@snowpack/plugin-dotenv',
+    'snowpack-plugin-svgr',
   ],
   packageOptions: {
     polyfillNode: true,
   },
   mount: {
-    public: { url: '/', static: true, resolve: false },
+    public: { url: '/', static: true },
     src: { url: '/build' },
   },
   optimize: {
@@ -23,7 +24,8 @@ module.exports = {
     '@utils': path.join(__dirname, 'src/utils'),
     '@components': path.join(__dirname, 'src/components'),
     '@styles': path.join(__dirname, 'src/styles'),
-    '@types': path.join(__dirname, 'src/types')
+    '@type': path.join(__dirname, 'src/types'),
+    '@assets': path.join(__dirname, 'src/assets'),
   },
   exclude: ['**/node_modules/**/*', '**/*.test.*'],
 }
