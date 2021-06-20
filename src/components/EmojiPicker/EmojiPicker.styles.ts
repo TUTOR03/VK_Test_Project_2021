@@ -1,5 +1,13 @@
 import styled from 'styled-components'
 
+interface EmojiSmileButtonProps {
+  menuOpened: boolean
+}
+
+interface EmojiMenuProps {
+  menuOpened: boolean
+}
+
 export const EmojiBlock = styled.div`
   position: relative;
   display: flex;
@@ -10,7 +18,25 @@ export const EmojiBlock = styled.div`
   z-index: 2;
 `
 
-export const EmojiMenu = styled.div`
+export const EmojiSmileButton = styled.div<EmojiSmileButtonProps>`
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  path {
+    fill: ${(props) => (props.menuOpened ? '#99A2AD' : '#C5D0DB')};
+  }
+  :hover {
+    path {
+      fill: #99a2ad;
+    }
+    cursor: pointer;
+  }
+`
+
+export const EmojiMenu = styled.div<EmojiMenuProps>`
   width: 290px;
   height: 290px;
   border-radius: 4px;
@@ -19,6 +45,7 @@ export const EmojiMenu = styled.div`
   right: 0;
   bottom: 50px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  visibility: ${(props) => (props.menuOpened ? 'visible' : 'hidden')};
 
   &::before {
     position: absolute;
@@ -69,5 +96,27 @@ export const EmojiScrollBlock = styled.div`
     :hover {
       cursor: pointer;
     }
+  }
+`
+export const MenuNav = styled.div`
+  height: 36px;
+  width: 100%;
+  background-color: #ebeef2;
+  border-radius: 4px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`
+export const MenuNavItem = styled.div`
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  :nth-child(1) {
+    border-radius: 0 0 0 4px;
+  }
+  path {
+    fill: #99a2ad;
   }
 `
