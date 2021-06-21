@@ -21,6 +21,7 @@ const InputArea: React.FC = () => {
     },
     needRefocus: false,
   })
+  const [lastUsedState, setLastUsedState] = useState<string[][]>([[]])
   const messageInput = useRef<HTMLTextAreaElement>(null)
 
   const inputSubmit = (event: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -40,8 +41,30 @@ const InputArea: React.FC = () => {
   }
 
   const emojiInput = (event: SyntheticEvent<HTMLDivElement>) => {
-    addSymbol((event.target as HTMLElement).innerHTML)
+    const new_emoji = (event.target as HTMLElement).innerHTML
+    addSymbol(new_emoji)
+    if (!lastUsedState[0].includes(new_emoji)) {
+      setLastUsedState((prev) => [
+        [(event.target as HTMLElement).innerHTML, ...prev[0].slice(0, 24)],
+      ])
+      localStorage.setItem(
+        'last_used',
+        JSON.stringify([
+          new_emoji,
+          ...JSON.parse(localStorage.getItem('last_used') || '[]').slice(0, 24),
+        ])
+      )
+    }
   }
+
+  useEffect(() => {
+    const storage = localStorage.getItem('last_used')
+    if (storage) {
+      setLastUsedState([JSON.parse(storage)])
+    } else {
+      localStorage.setItem('last_used', JSON.stringify([]))
+    }
+  }, [])
 
   const addSymbol = (str: string) => {
     const st = messageInput.current ? messageInput.current.selectionStart : 0
@@ -97,9 +120,9 @@ const InputArea: React.FC = () => {
         />
         {useMemo(
           () => (
-            <EmojiPicker emojiInput={emojiInput} />
+            <EmojiPicker last_used={lastUsedState} emojiInput={emojiInput} />
           ),
-          []
+          [lastUsedState]
         )}
       </FormGroup>
     </InputRow>

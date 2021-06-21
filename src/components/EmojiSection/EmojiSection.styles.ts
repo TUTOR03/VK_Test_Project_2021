@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const SectionHeader = styled.h5`
   margin: 0;
   position: sticky;
-  top: 0;
+  top: -1px;
   background-color: #ffffff;
   color: #939393;
   font-style: normal;
