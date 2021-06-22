@@ -11,7 +11,6 @@ const App: React.FC = () => {
   ])
 
   const addMessage = (message: string)=>{
-    console.log(wrapWords(message))
     setMessages((prev)=>([
       ...prev,
       wrapWords(message)

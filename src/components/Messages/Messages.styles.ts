@@ -19,6 +19,7 @@ export const Message = styled.div`
   line-height: 15px;
   padding: 7px;
   margin-bottom: 7px;
+  border-bottom: 1px solid #99A2AD;
 `
 
 export const Colored = styled.span`
