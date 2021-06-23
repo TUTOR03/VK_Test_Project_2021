@@ -1,6 +1,6 @@
 # EMOJI PICKER
 
-## VK test app 2021([vk_app.stuvars.com](https://vk_app.stuvars.com))
+## VK test app 2021([vk_app.stuvars.com](https://vkapp.stuvars.com))
 
 #### Небольшое веб-приложение: Форма ввода сообщений с возможностью выбора эмоджи и подсветкой ссылок, упоминаний и хештегов.
 
@@ -24,7 +24,7 @@
 
 ---
 
-### Протестировать приложение можно здесь: [vk_app.stuvars.com](https://vk_app.stuvars.com)
+### Протестировать приложение можно здесь: [vk_app.stuvars.com](https://vkapp.stuvars.com)
 
 ---
 
