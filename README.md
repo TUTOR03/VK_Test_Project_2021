@@ -9,6 +9,7 @@
 ### Используемые технологии:
 
 - ReactJS
+- TypeScript
 - Snowpack
 - Docker
 
