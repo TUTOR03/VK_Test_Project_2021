@@ -12,10 +12,10 @@ import EmojiPicker from '@components/EmojiPicker'
 import { MessageInputT } from '@type/InputArea'
 
 interface InputAreaProps {
-  addMessage: (message: string)=>void
+  addMessage: (message: string) => void
 }
 
-const InputArea: React.FC<InputAreaProps> = ({addMessage}) => {
+const InputArea: React.FC<InputAreaProps> = ({ addMessage }) => {
   const [messageInputState, setMessageInputState] = useState<MessageInputT>({
     rows: 1,
     value: '',
@@ -31,11 +31,13 @@ const InputArea: React.FC<InputAreaProps> = ({addMessage}) => {
   const inputSubmit = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.code == 'Enter' && !event.ctrlKey) {
       event.preventDefault()
-      addMessage(messageInputState.value)
-      setMessageInputState((prev)=>({
-        ...prev,
-        value:''
-      }))
+      if (messageInputState.value) {
+        addMessage(messageInputState.value)
+        setMessageInputState((prev) => ({
+          ...prev,
+          value: '',
+        }))
+      }
     } else if (event.code == 'Enter' && event.ctrlKey) {
       addSymbol('\n')
     }
@@ -51,21 +53,28 @@ const InputArea: React.FC<InputAreaProps> = ({addMessage}) => {
   const emojiInput = (event: SyntheticEvent<HTMLDivElement>) => {
     const new_emoji = (event.target as HTMLElement).innerHTML
     addSymbol(new_emoji)
-    if(!lastUsedState[0].includes(new_emoji)){
-      setLastUsedState((prev)=>[[(event.target as HTMLElement).innerHTML, ...prev[0].slice(0,24)]])
-      localStorage.setItem('last_used', JSON.stringify([new_emoji, ...JSON.parse(localStorage.getItem('last_used') || '[]').slice(0, 24)]))
+    if (!lastUsedState[0].includes(new_emoji)) {
+      setLastUsedState((prev) => [
+        [(event.target as HTMLElement).innerHTML, ...prev[0].slice(0, 24)],
+      ])
+      localStorage.setItem(
+        'last_used',
+        JSON.stringify([
+          new_emoji,
+          ...JSON.parse(localStorage.getItem('last_used') || '[]').slice(0, 24),
+        ])
+      )
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     const storage = localStorage.getItem('last_used')
-    if(storage){
+    if (storage) {
       setLastUsedState([JSON.parse(storage)])
-    }
-    else{
+    } else {
       localStorage.setItem('last_used', JSON.stringify([]))
     }
-  },[])
+  }, [])
 
   const addSymbol = (str: string) => {
     const st = messageInput.current ? messageInput.current.selectionStart : 0

@@ -7,9 +7,23 @@ export const Container = styled.div`
   position: relative;
   border-radius: 4px;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #dae2ea;
+    border-radius: 4px;
+    :hover {
+      cursor: pointer;
+    }
+  }
 `
 export const Message = styled.div`
   width: 90%;
@@ -19,7 +33,7 @@ export const Message = styled.div`
   line-height: 15px;
   padding: 7px;
   margin-bottom: 7px;
-  border-bottom: 1px solid #99A2AD;
+  border-bottom: 1px solid #99a2ad;
 `
 
 export const Colored = styled.span`
